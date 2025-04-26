@@ -221,18 +221,15 @@ audio {
 }
 #hiddenImage {
     display: none;
-    max-width: 80%; /* Hoặc kích thước bạn muốn */
-    max-height: 80%; /* Để không vượt quá chiều cao màn hình */
+    max-width: 80%;
+    max-height: 80%;
     height: auto;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-
-    /* Định vị chính giữa màn hình */
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 100; /* Đảm bảo nó ở trên các thành phần khác */
-    background-color: rgba(255, 255, 255, 0.9); /* Nền mờ (tùy chọn) */
-    padding: 20px; /* Khoảng trắng xung quanh ảnh (tùy chọn) */
+    position: fixed; /* Quan trọng */
+    top: 50%;    /* Quan trọng */
+    left: 50%;   /* Quan trọng */
+    transform: translate(-50%, -50%); /* Quan trọng */
+    z-index: 100; /* Quan trọng để hiển thị trên các lớp khác */
+    /* Các thuộc tính tùy chọn khác như background-color, padding */
 }
