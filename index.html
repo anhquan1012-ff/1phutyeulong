@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -21,11 +20,14 @@
         </div>
     </div>
 
-    <!-- Nhạc nền tự động phát -->
-    <audio autoplay loop>
+    <!-- Nhạc nền -->
+    <audio id="music">
         <source src="luu_luyen_sau_chia_tay.mp3" type="audio/mp3">
         Trình duyệt của bạn không hỗ trợ phát nhạc.
     </audio>
+
+    <!-- Nút Play -->
     <button onclick="document.getElementById('music').play()">Phát nhạc</button>
+
 </body>
 </html>
