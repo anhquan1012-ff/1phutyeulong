@@ -21,14 +21,23 @@
         </div>
     </div>
 
-    <!-- Thẻ audio phát nhạc -->
-    <audio id="music">
-        <source src="music/luu_luyen_sau_chia_tay.mp3" type="audio/mp3">
-        Trình duyệt của bạn không hỗ trợ phát nhạc.
-    </audio>
+    <audio id="music" autoplay>
+    <source src="music/luu_luyen_sau_chia_tay.mp3" type="audio/mp3">
+    Trình duyệt của bạn không hỗ trợ phát nhạc.
+</audio>
 
-    <!-- Nút phát nhạc -->
-    <button onclick="document.getElementById('music').play()">Phát nhạc</button>
+<script>
+    window.onload = function() {
+        var audio = document.getElementById('music');
+        audio.play().catch(function(error) {
+            // Nếu autoplay không được phép, sẽ thử phát nhạc sau khi người dùng nhấn nút
+            console.log("Autoplay bị chặn, vui lòng nhấn nút 'Phát nhạc'.");
+        });
+    };
+</script>
+
+<!-- Nút Play -->
+<button onclick="document.getElementById('music').play()">Phát nhạc</button>
 
 </body>
 </html>
