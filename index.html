@@ -17,27 +17,32 @@
         <img src="photo.jpg" alt="Ảnh của chúng ta" class="photo">
 
         <div class="button-container">
-            <a href="#yes" class="button">Anh muốn quay lại với em 💖</a>
+            <!-- Nút ngỏ lời quay lại -->
+            <a href="javascript:void(0);" class="button" id="reconnectBtn">Anh muốn quay lại với em 💖</a>
         </div>
     </div>
 
-    <audio id="music" autoplay>
-    <source src="music/luu_luyen_sau_chia_tay.mp3" type="audio/mp3">
-    Trình duyệt của bạn không hỗ trợ phát nhạc.
-</audio>
+    <audio id="music">
+        <source src="music/luu_luyen_sau_chia_tay.mp3" type="audio/mp3">
+        Trình duyệt của bạn không hỗ trợ phát nhạc.
+    </audio>
 
-<script>
-    window.onload = function() {
-        var audio = document.getElementById('music');
-        audio.play().catch(function(error) {
-            // Nếu autoplay không được phép, sẽ thử phát nhạc sau khi người dùng nhấn nút
-            console.log("Autoplay bị chặn, vui lòng nhấn nút 'Phát nhạc'.");
-        });
-    };
-</script>
+    <script>
+        // Khi người dùng nhấn vào nút "Anh muốn quay lại với em 💖"
+        document.getElementById('reconnectBtn').onclick = function() {
+            var audio = document.getElementById('music');
+            audio.play();  // Phát nhạc khi nút được nhấn
 
-<!-- Nút Play -->
-<button onclick="document.getElementById('music').play()">Phát nhạc</button>
+            // Ẩn nút "Phát nhạc"
+            var playButton = document.getElementById('playButton');
+            if (playButton) {
+                playButton.style.display = 'none';
+            }
+
+            // Ẩn nút ngỏ lời
+            this.style.display = 'none';  // Ẩn nút "Anh muốn quay lại với em 💖"
+        };
+    </script>
 
 </body>
 </html>
