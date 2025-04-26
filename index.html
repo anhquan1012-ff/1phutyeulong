@@ -5,43 +5,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gửi Phùng Minh Anh 💖</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lovers+Quarrel&display=swap">
+    <style>
+        body {
+            overflow: hidden; /* Ẩn thanh cuộn khi có hiệu ứng */
+        }
+    </style>
 </head>
 <body>
 
+    <div class="heart-container"></div>
+
     <div class="container">
         <h1>Gửi Phùng Minh Anh</h1>
-        <p>Anh vẫn luôn nhớ em rất nhiều... 💔</p>
-        <p>Chúng ta đã từng có những ngày tháng rất đẹp bên nhau. Anh muốn hỏi: Em có thể cho chúng ta một cơ hội nữa không?</p>
-        <p>Anh thực sự muốn cùng em viết tiếp câu chuyện còn dang dở... 🌸</p>
+        <p class="fade-in one">Anh vẫn luôn nhớ em rất nhiều... 💔</p>
+        <p class="fade-in two">Chúng ta đã từng có những ngày tháng rất đẹp bên nhau. Anh muốn hỏi: Em có thể cho chúng ta một cơ hội nữa không?</p>
+        <p class="fade-in three">Anh thực sự muốn cùng em viết tiếp câu chuyện còn dang dở... 🌸</p>
 
-        <img src="photo.jpg" alt="Ảnh của chúng ta" class="photo">
+        <img src="photo.jpg" alt="Ảnh của chúng ta" class="photo fade-in four">
 
         <div class="button-container">
-            <!-- Nút ngỏ lời quay lại -->
-            <a href="javascript:void(0);" class="button" id="reconnectBtn">Anh muốn quay lại với em 💖</a>
+            <a href="javascript:void(0);" class="button glow-on-hover" id="reconnectBtn">Anh muốn quay lại với em 💖</a>
         </div>
     </div>
 
-    <audio id="music">
-        <source src="music/luu_luyen_sau_chia_tay.mp3" type="audio/mp3">
+    <audio id="music" loop>
+        <source src="music/nho_nguoi_yeu.mp3" type="audio/mp3">
         Trình duyệt của bạn không hỗ trợ phát nhạc.
     </audio>
 
     <script>
-        // Khi người dùng nhấn vào nút "Anh muốn quay lại với em 💖"
-        document.getElementById('reconnectBtn').onclick = function() {
-            var audio = document.getElementById('music');
-            audio.play();  // Phát nhạc khi nút được nhấn
+        const reconnectBtn = document.getElementById('reconnectBtn');
+        const music = document.getElementById('music');
+        const heartContainer = document.querySelector('.heart-container');
 
-            // Ẩn nút "Phát nhạc"
-            var playButton = document.getElementById('playButton');
-            if (playButton) {
-                playButton.style.display = 'none';
-            }
-
-            // Ẩn nút ngỏ lời
-            this.style.display = 'none';  // Ẩn nút "Anh muốn quay lại với em 💖"
+        // Phát nhạc khi trang tải
+        window.onload = function() {
+            music.play();
         };
+
+        reconnectBtn.addEventListener('click', () => {
+            reconnectBtn.classList.add('clicked'); // Thêm hiệu ứng nhấp nháy
+            // Tạo mưa tim
+            for (let i = 0; i < 50; i++) {
+                createHeart();
+            }
+            // Ẩn nút sau khi nhấp
+            setTimeout(() => {
+                reconnectBtn.style.display = 'none';
+            }, 1000);
+        });
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '💖';
+            heartContainer.appendChild(heart);
+
+            const size = Math.random() * 20 + 10;
+            heart.style.fontSize = `${size}px`;
+            heart.style.color = getRandomColor();
+            heart.style.left = Math.random() * window.innerWidth + 'px';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's'; // Thời gian rơi ngẫu nhiên
+
+            heart.addEventListener('animationend', () => {
+                heart.remove();
+            });
+        }
+
+        function getRandomColor() {
+            const colors = ['#e91e63', '#f44336', '#9c27b0', '#673ab7', '#3f51b5', '#2196f3'];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
     </script>
 
 </body>
