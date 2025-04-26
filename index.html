@@ -8,7 +8,15 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lovers+Quarrel&display=swap">
     <style>
         body {
-            overflow: hidden; /* Ẩn thanh cuộn khi có hiệu ứng */
+            overflow-x: hidden; /* Ngăn thanh cuộn ngang không cần thiết */
+        }
+        #hiddenImage {
+            display: none; /* Ẩn ảnh ban đầu */
+            max-width: 80%;
+            height: auto;
+            border-radius: 10px;
+            margin-top: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
@@ -27,10 +35,11 @@
         <div class="button-container">
             <a href="javascript:void(0);" class="button glow-on-hover" id="reconnectBtn">Anh muốn quay lại với em 💖</a>
         </div>
-    </div>
+
+        <img id="hiddenImage" src="your-image.jpg" alt="Hình ảnh đặc biệt"> </div>
 
     <audio id="music" loop>
-        <source src="music/luu_luyen_sau_chia_tay.mp3" type="audio/mp3">
+        <source src="music/nho_nguoi_yeu.mp3" type="audio/mp3">
         Trình duyệt của bạn không hỗ trợ phát nhạc.
     </audio>
 
@@ -38,21 +47,20 @@
         const reconnectBtn = document.getElementById('reconnectBtn');
         const music = document.getElementById('music');
         const heartContainer = document.querySelector('.heart-container');
+        const hiddenImage = document.getElementById('hiddenImage'); // Lấy tham chiếu đến ảnh ẩn
 
-        // Phát nhạc khi trang tải
         window.onload = function() {
             music.play();
         };
 
         reconnectBtn.addEventListener('click', () => {
-            reconnectBtn.classList.add('clicked'); // Thêm hiệu ứng nhấp nháy
-            // Tạo mưa tim
+            reconnectBtn.classList.add('clicked');
             for (let i = 0; i < 50; i++) {
                 createHeart();
             }
-            // Ẩn nút sau khi nhấp
             setTimeout(() => {
                 reconnectBtn.style.display = 'none';
+                hiddenImage.style.display = 'block'; // Hiển thị ảnh khi nút được nhấn
             }, 1000);
         });
 
@@ -66,7 +74,7 @@
             heart.style.fontSize = `${size}px`;
             heart.style.color = getRandomColor();
             heart.style.left = Math.random() * window.innerWidth + 'px';
-            heart.style.animationDuration = Math.random() * 3 + 2 + 's'; // Thời gian rơi ngẫu nhiên
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
 
             heart.addEventListener('animationend', () => {
                 heart.remove();
