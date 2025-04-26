@@ -2,6 +2,7 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gửi Phùng Minh Anh 💖</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -20,15 +21,18 @@
         </div>
     </div>
 
-    <!-- Nhạc nền -->
-    <audio id="music" autoplay>
-    <source src="music/luu_luyen_sau_chia_tay.mp3" type="audio/mp3">
-</audio>
-<audio id="music">
-    <source src="luu_luyen_sau_chia_tay.mp3" type="audio/mp3">
-    Trình duyệt của bạn không hỗ trợ phát nhạc.
-</audio>
-<button onclick="document.getElementById('music').play()">Phát nhạc</button>
+    <!-- Thẻ audio phát nhạc -->
+    <audio id="music">
+        <source src="music/luu_luyen_sau_chia_tay.mp3" type="audio/mp3">
+        Trình duyệt của bạn không hỗ trợ phát nhạc.
+    </audio>
+
+    <!-- Nút phát nhạc -->
+    <button onclick="document.getElementById('music').play()">Phát nhạc</button>
 
 </body>
 </html>
+<audio id="music" autoplay>
+    <source src="music/luu_luyen_sau_chia_tay.mp3" type="audio/mp3">
+    Trình duyệt của bạn không hỗ trợ phát nhạc.
+</audio>
